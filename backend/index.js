@@ -2,13 +2,14 @@ const express = require("express"); // Import Express
 const mongoose = require("mongoose"); // Import Mongoose
 const cors = require("cors"); // Import CORS
 const TodoModel = require("./Models/Todo"); // Import Todo model
+require('dotenv').config(); // Load environment variables
 
 const app = express();
 app.use(cors()); // Enable CORS
 app.use(express.json()); // Parse JSON
 
-// Connect to MongoDB
-mongoose.connect("mongodb+srv://ayman:1234@mycluster.r2ulq.mongodb.net/todo?retryWrites=true&w=majority&appName=myCluster")
+// Connect to MongoDB using environment variable
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.error("MongoDB connection error:", err));
 
@@ -51,7 +52,7 @@ app.post("/add", (req, res) => {
 
 
 // Start the server
-app.listen(3100, () => {
-  console.log(`server running `);
+app.listen(process.env.PORT || 3100, () => {
+  console.log(`server running on port ${process.env.PORT || 3100}`);
 });
 

@@ -1,0 +1,22 @@
+{
+  "name": "TODO - App",
+  "version": "1.0.0",
+  "description": "Full-stack TODO application",
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm start",
+    "frontend": "cd todolist && npm run dev",
+    "install-all": "npm install && cd backend && npm install && cd ../todolist && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "todo",
+    "react",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC"
+}

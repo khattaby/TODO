@@ -9,7 +9,7 @@ function Create({ setTasks }) {
     if (!task.trim()) return; // Prevent adding empty tasks
 
     try {
-      const result = await axios.post('http://localhost:3000/add', { task }); // Send task to server
+      const result = await axios.post('http://localhost:3100/add', { task }); // Send task to server
       setTasks(prevTasks => [...prevTasks, result.data]); // Update tasks state with new task
       setTask(""); // Clear input field
     } catch (err) {

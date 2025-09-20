@@ -9,7 +9,7 @@ function Home() {
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const result = await axios.get("http://localhost:3000/get"); // Fetch todos from the server
+        const result = await axios.get("http://localhost:3100/get"); // Fetch todos from the server
         setTodos(result.data); // Update state with fetched todos
       } catch (err) {
         console.error(err); // Log any errors
@@ -20,7 +20,7 @@ function Home() {
 
   const handleEdit = async (id) => {
     try {
-      await axios.put(`http://localhost:3000/update/${id}`); // Update the todo's status
+      await axios.put(`http://localhost:3100/update/${id}`); // Update the todo's status
       setTodos((prevTodos) =>
         prevTodos.map((todo) =>
           todo._id === id ? { ...todo, done: !todo.done } : todo // Toggle 'done' status
@@ -33,7 +33,7 @@ function Home() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/delete/${id}`); // Delete the todo
+      await axios.delete(`http://localhost:3100/delete/${id}`); // Delete the todo
       setTodos((prevTodos) => prevTodos.filter((todo) => todo._id !== id)); // Update state to remove deleted todo
     } catch (err) {
       console.error(err); // Log any errors
